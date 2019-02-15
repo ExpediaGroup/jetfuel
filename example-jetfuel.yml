@@ -1,0 +1,19 @@
+---
+  sourceDatabase: "test"
+  sourceTable: "clickstream"
+  targetDatabase: "jetfuel"
+  targetTable: "clickstream_parquet"
+  targetFileFormat: "parquet"
+  targetCompression: "snappy"
+  targetCompaction: true
+  maxSplit: 1000000000
+  minSplit: 256000000
+  smallFileAvgSize: 1000000000
+  sizePerTask: 1000000000
+  hiveMetastoreUri: "thrift://hiveserver2:9083"
+  hiveServer2Url: "jdbc:hive2://hiveserver2:10001/default"
+  hiveServer2Username: "hive"
+  hiveServer2Password: ""
+  preFueling:
+    dropTarget: false
+  partitionGrouping: dynamic

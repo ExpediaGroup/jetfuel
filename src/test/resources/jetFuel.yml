@@ -1,0 +1,20 @@
+sourceDatabase: jetfuel_test
+sourceTable: source_database
+
+targetDatabase: jetfuel_test
+targetTable: target_database
+
+targetFileFormat: ORC
+targetCompression: SNAPPY
+targetCompaction: true
+maxSplit: 1024000000
+minSplit: 256000000
+smallFileAvgSize: 1024000000
+sizePerTask: 1000000000
+
+hiveServer2Url: jdbc:hive2://hiveserver2:10001/jetfuel_test
+hiveMetastoreUri: thrift://hivemetastore:9083
+
+hiveServer2Username: hdfs
+hiveServer2Password:
+
