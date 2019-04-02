@@ -66,7 +66,6 @@ public final class JetFuelConfiguration {
     private final String partitionFilter;
     private final String maxSplit;
     private final String minSplit;
-    private final String mapReduceTaskTimeout;
 
     private final String smallFileAvgSize;
     private final String sizePerTask;
@@ -74,7 +73,7 @@ public final class JetFuelConfiguration {
     private final Long mapReduceJavaOptsInMB;
     private final Long parquetBlockSize;
     private final Long parquetPageSize;
-
+    private final Long mapReduceTaskTimeout;
     /**
      * Determines the size of partition groupings (if needed).
      * If {@link #partitionGroupingStrategy} is set to DYNAMIC, this will be used as the starting value.
@@ -191,7 +190,7 @@ public final class JetFuelConfiguration {
         public String minSplit;
         public String smallFileAvgSize;
         public String sizePerTask;
-        public String mapReduceTaskTimeout;
+        public Long mapReduceTaskTimeout;
         public Long mapReduceMemoryInMB;
         public Long mapReduceJavaOptsInMB;
         public Long parquetBlockSize;
@@ -315,7 +314,7 @@ public final class JetFuelConfiguration {
                 partitionGrouping = PartitionGrouping.NONE;
             }
             // Add mapReduceTaskTimeout for map-reduce jobs
-            mapReduceTaskTimeout = isBlank(mapReduceTaskTimeout) ? config.getString("mapReduceTaskTimeout") : mapReduceTaskTimeout;
+            mapReduceTaskTimeout = mapReduceTaskTimeout == null ? config.getLong("mapReduceTaskTimeout") : mapReduceTaskTimeout;
         }
 
         //
@@ -486,7 +485,7 @@ public final class JetFuelConfiguration {
             return new Builder(this);
         }
 
-        public Builder withMapReduceTaskTimeout(final String mapReduceTaskTimeout) {
+        public Builder withMapReduceTaskTimeout(final Long mapReduceTaskTimeout) {
             this.mapReduceTaskTimeout = mapReduceTaskTimeout;
             return new Builder(this);
         }

@@ -61,7 +61,7 @@ public final class QueryGeneratorFactoryTest {
             .withPartitionGrouping("STATIC")
             .withHiveMetastoreUri("hiveMetastoreUri")
             .withHiveServer2Url("hiveUrl")
-            .withMapReduceTaskTimeout("1110000")
+            .withMapReduceTaskTimeout(Long.valueOf(111000))
             .withHiveServer2Username("username")
             .withHiveServer2Password("password");
 

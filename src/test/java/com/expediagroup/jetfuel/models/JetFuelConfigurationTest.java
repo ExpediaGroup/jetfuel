@@ -465,13 +465,13 @@ public final class JetFuelConfigurationTest {
                 .withMapReduceTaskTimeout(null)
                 .build();
         assertNotNull(jetFuelConfigurationWithoutTimeout.getMapReduceTaskTimeout());
-        assertEquals("1200000", jetFuelConfigurationWithoutTimeout.getMapReduceTaskTimeout());
+        assertEquals(Long.valueOf(1200000), jetFuelConfigurationWithoutTimeout.getMapReduceTaskTimeout());
 
 
         final JetFuelConfiguration jetFuelConfigurationWithTimeout = builder
-                .withMapReduceTaskTimeout("110000")
+                .withMapReduceTaskTimeout(Long.valueOf(110000))
                 .build();
         assertNotNull(jetFuelConfigurationWithTimeout.getMapReduceTaskTimeout());
-        assertEquals("110000", jetFuelConfigurationWithTimeout.getMapReduceTaskTimeout());
+        assertEquals(Long.valueOf(110000), jetFuelConfigurationWithTimeout.getMapReduceTaskTimeout());
     }
 }
