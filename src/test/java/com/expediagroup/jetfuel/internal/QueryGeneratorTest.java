@@ -104,7 +104,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new DefaultFileFormatCompressorImpl());
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(7, request.getJetFuelQueries().size());
+        assertEquals(8, request.getJetFuelQueries().size());
         assertTrue(request.getJetFuelQueries().contains("SET hive.exec.dynamic.partition.mode=nonstrict"));
         assertTrue(request.getJetFuelQueries().contains("SET hive.exec.dynamic.partition=true"));
         assertTrue(request.getJetFuelQueries().contains("SET hive.exec.compress.output=false"));
@@ -183,7 +183,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new OrcFileFormatCompressorImpl());
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
-        assertEquals(6, request.getJetFuelQueries().size());
+        assertEquals(7, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("CREATE TABLE targetDb.targetTable LIKE sourceDb.sourceTable STORED AS ORC tblProperties(\"orc.compress\"=\"SNAPPY\")"));
         assertTrue(request.getJetFuelQueries().contains("INSERT OVERWRITE TABLE targetDb.targetTable PARTITION (partition1, partition2) SELECT cols, partition1, partition2 FROM sourceDb.sourceTable"));
@@ -195,7 +195,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new OrcFileFormatCompressorImpl());
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, false);
-        assertEquals(4, request.getJetFuelQueries().size());
+        assertEquals(5, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("INSERT OVERWRITE TABLE targetDb.targetTable PARTITION (partition1, partition2) SELECT cols, partition1, partition2 FROM sourceDb.sourceTable"));
     }
@@ -206,7 +206,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new OrcFileFormatCompressorImpl());
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", true, true);
-        assertEquals(12, request.getJetFuelQueries().size());
+        assertEquals(13, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
 
         assertTrue(request.getJetFuelQueries().contains("SET hive.merge.mapfiles=true"));
@@ -228,7 +228,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new OrcFileFormatCompressorImpl());
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(6, request.getJetFuelQueries().size());
+        assertEquals(7, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("CREATE TABLE targetDb.targetTable LIKE sourceDb.sourceTable STORED AS ORC tblProperties(\"orc.compress\"=\"ZLIB\")"));
         assertTrue(request.getJetFuelQueries().contains("INSERT OVERWRITE TABLE targetDb.targetTable PARTITION (partition1, partition2) SELECT cols, partition1, partition2 FROM sourceDb.sourceTable"));
@@ -242,7 +242,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new OrcFileFormatCompressorImpl());
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
-        assertEquals(6, request.getJetFuelQueries().size());
+        assertEquals(7, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("CREATE TABLE targetDb.targetTable LIKE sourceDb.sourceTable STORED AS ORC tblProperties(\"orc.compress\"=\"NONE\")"));
         assertTrue(request.getJetFuelQueries().contains("INSERT OVERWRITE TABLE targetDb.targetTable PARTITION (partition1, partition2) SELECT cols, partition1, partition2 FROM sourceDb.sourceTable"));
@@ -256,7 +256,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new OrcFileFormatCompressorImpl());
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(6, request.getJetFuelQueries().size());
+        assertEquals(7, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("CREATE TABLE targetDb.targetTable LIKE sourceDb.sourceTable STORED AS ORC tblProperties(\"orc.compress\"=\"NONE\")"));
         assertTrue(request.getJetFuelQueries().contains("INSERT OVERWRITE TABLE targetDb.targetTable PARTITION (partition1, partition2) SELECT cols, partition1, partition2 FROM sourceDb.sourceTable"));
@@ -271,7 +271,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new ParquetFileFormatCompressorImpl());
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
-        assertEquals(6, request.getJetFuelQueries().size());
+        assertEquals(7, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("CREATE TABLE targetDb.targetTable LIKE sourceDb.sourceTable STORED AS PARQUET tblProperties(\"parquet.compression\"=\"SNAPPY\")"));
         assertTrue(request.getJetFuelQueries().contains("INSERT OVERWRITE TABLE targetDb.targetTable PARTITION (partition1, partition2) SELECT cols, partition1, partition2 FROM sourceDb.sourceTable"));
@@ -286,7 +286,7 @@ public final class QueryGeneratorTest {
         final QueryGenerator queryGenerator = new QueryGenerator(client, jetFuelConfiguration, new AvroFileFormatCompressorImpl());
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
-        assertEquals(8, request.getJetFuelQueries().size());
+        assertEquals(9, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET hive.exec.compress.output=true"));
         assertTrue(request.getJetFuelQueries().contains("SET avro.output.codec=snappy"));
@@ -304,7 +304,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(9, request.getJetFuelQueries().size());
+        assertEquals(10, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET hive.exec.compress.output=true"));
         assertTrue(request.getJetFuelQueries().contains("SET mapreduce.output.fileoutputformat.compress=true"));
@@ -323,7 +323,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(10, request.getJetFuelQueries().size());
+        assertEquals(11, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET hive.exec.compress.output=true"));
         assertTrue(request.getJetFuelQueries().contains("SET mapred.output.compression.type=BLOCK"));
@@ -343,7 +343,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(10, request.getJetFuelQueries().size());
+        assertEquals(11, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET hive.exec.compress.output=true"));
         assertTrue(request.getJetFuelQueries().contains("SET mapred.output.compression.type=BLOCK"));
@@ -369,7 +369,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(8, request.getJetFuelQueries().size());
+        assertEquals(9, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET mapreduce.map.memory.mb=10"));
         assertTrue(request.getJetFuelQueries().contains("SET mapreduce.reduce.memory.mb=10"));
@@ -384,7 +384,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(8, request.getJetFuelQueries().size());
+        assertEquals(9, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET mapreduce.map.java.opts=-Xmx10m"));
         assertTrue(request.getJetFuelQueries().contains("SET mapreduce.reduce.java.opts=-Xmx10m"));
@@ -399,7 +399,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(7, request.getJetFuelQueries().size());
+        assertEquals(8, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET parquet.block.size=10"));
     }
@@ -413,7 +413,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(7, request.getJetFuelQueries().size());
+        assertEquals(8, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("SET parquet.page.size=10"));
     }
@@ -427,7 +427,7 @@ public final class QueryGeneratorTest {
 
         final JetFuelRequest request = queryGenerator.generateJetFuelRequest(true, table, "cols", false, true);
 
-        assertEquals(8, request.getJetFuelQueries().size());
+        assertEquals(9, request.getJetFuelQueries().size());
         testStandardQueries(request.getJetFuelQueries());
         assertTrue(request.getJetFuelQueries().contains("confQuery1"));
         assertTrue(request.getJetFuelQueries().contains("confQuery2"));

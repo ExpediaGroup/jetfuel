@@ -107,6 +107,10 @@ public class QueryGenerator {
             request.addJetFuelQuery(getDropTableIfExists());
             request.addJetFuelQueries(fileFormatCompressor.getFileFormatCompressionQueries(jetFuelConfiguration));
         }
+        if(jetFuelConfiguration.getTimeout() != null) {
+            request.addJetFuelQuery(new HiveProperty("mapreduce.task.timeout", jetFuelConfiguration.getTimeout()));
+        }
+
         log.info("Config queries {}", jetFuelConfiguration.getConfigQueries());
         if (jetFuelConfiguration.getConfigQueries() != null && !jetFuelConfiguration.getConfigQueries().isEmpty()) {
             for (final String query : jetFuelConfiguration.getConfigQueries()) {

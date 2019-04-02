@@ -17,3 +17,4 @@
   preFueling:
     dropTarget: false
   partitionGrouping: dynamic
+  timeout: 1100000

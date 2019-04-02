@@ -458,4 +458,20 @@ public final class JetFuelConfigurationTest {
                 .build()
                 .getPartitionGroupingStrategy());
     }
+
+    @Test
+    public void testTimeout() {
+        final JetFuelConfiguration jetFuelConfigurationWithoutTimeout = builder
+                .withTimeout(null)
+                .build();
+        assertNotNull(jetFuelConfigurationWithoutTimeout.getTimeout());
+        assertEquals("1200000", jetFuelConfigurationWithoutTimeout.getTimeout());
+
+
+        final JetFuelConfiguration jetFuelConfigurationWithTimeout = builder
+                .withTimeout("110000")
+                .build();
+        assertNotNull(jetFuelConfigurationWithTimeout.getTimeout());
+        assertEquals("110000", jetFuelConfigurationWithTimeout.getTimeout());
+    }
 }

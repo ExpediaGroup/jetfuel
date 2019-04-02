@@ -66,6 +66,8 @@ public final class JetFuelConfiguration {
     private final String partitionFilter;
     private final String maxSplit;
     private final String minSplit;
+    private final String timeout;
+
     private final String smallFileAvgSize;
     private final String sizePerTask;
     private final Long mapReduceMemoryInMB;
@@ -139,6 +141,7 @@ public final class JetFuelConfiguration {
         groupPartitionOverride = builder.groupPartitionOverride;
         enablePartitionGrouping = builder.enablePartitionGrouping;
         partitionGroupingStrategy = builder.partitionGrouping;
+        timeout = builder.timeout;
         configQueries = builder.configQueries == null
                 ? null
                 : ImmutableList.copyOf(builder.configQueries);
@@ -188,6 +191,7 @@ public final class JetFuelConfiguration {
         public String minSplit;
         public String smallFileAvgSize;
         public String sizePerTask;
+        public String timeout;
         public Long mapReduceMemoryInMB;
         public Long mapReduceJavaOptsInMB;
         public Long parquetBlockSize;
@@ -227,6 +231,7 @@ public final class JetFuelConfiguration {
             partitionGrouping = builder.partitionGrouping;
             configQueries = builder.configQueries;
             preFueling = builder.preFueling;
+            timeout = builder.timeout;
         }
 
         public JetFuelConfiguration build() {
@@ -309,6 +314,8 @@ public final class JetFuelConfiguration {
             } else {
                 partitionGrouping = PartitionGrouping.NONE;
             }
+            // Add timeout for map-reduce jobs
+            timeout = isBlank(timeout) ? config.getString("timeout") : timeout;
         }
 
         //
@@ -476,6 +483,11 @@ public final class JetFuelConfiguration {
 
         public Builder withPreFueling(final PreFueling preFueling) {
             this.preFueling = preFueling;
+            return new Builder(this);
+        }
+
+        public Builder withTimeout(final String timeout) {
+            this.timeout = timeout;
             return new Builder(this);
         }
     }
