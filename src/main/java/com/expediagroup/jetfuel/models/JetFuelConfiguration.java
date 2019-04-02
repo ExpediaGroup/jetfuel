@@ -66,7 +66,7 @@ public final class JetFuelConfiguration {
     private final String partitionFilter;
     private final String maxSplit;
     private final String minSplit;
-    private final String timeout;
+    private final String mapReduceTaskTimeout;
 
     private final String smallFileAvgSize;
     private final String sizePerTask;
@@ -141,7 +141,7 @@ public final class JetFuelConfiguration {
         groupPartitionOverride = builder.groupPartitionOverride;
         enablePartitionGrouping = builder.enablePartitionGrouping;
         partitionGroupingStrategy = builder.partitionGrouping;
-        timeout = builder.timeout;
+        mapReduceTaskTimeout = builder.mapReduceTaskTimeout;
         configQueries = builder.configQueries == null
                 ? null
                 : ImmutableList.copyOf(builder.configQueries);
@@ -191,7 +191,7 @@ public final class JetFuelConfiguration {
         public String minSplit;
         public String smallFileAvgSize;
         public String sizePerTask;
-        public String timeout;
+        public String mapReduceTaskTimeout;
         public Long mapReduceMemoryInMB;
         public Long mapReduceJavaOptsInMB;
         public Long parquetBlockSize;
@@ -231,7 +231,7 @@ public final class JetFuelConfiguration {
             partitionGrouping = builder.partitionGrouping;
             configQueries = builder.configQueries;
             preFueling = builder.preFueling;
-            timeout = builder.timeout;
+            mapReduceTaskTimeout = builder.mapReduceTaskTimeout;
         }
 
         public JetFuelConfiguration build() {
@@ -314,8 +314,8 @@ public final class JetFuelConfiguration {
             } else {
                 partitionGrouping = PartitionGrouping.NONE;
             }
-            // Add timeout for map-reduce jobs
-            timeout = isBlank(timeout) ? config.getString("timeout") : timeout;
+            // Add mapReduceTaskTimeout for map-reduce jobs
+            mapReduceTaskTimeout = isBlank(mapReduceTaskTimeout) ? config.getString("mapReduceTaskTimeout") : mapReduceTaskTimeout;
         }
 
         //
@@ -486,8 +486,8 @@ public final class JetFuelConfiguration {
             return new Builder(this);
         }
 
-        public Builder withTimeout(final String timeout) {
-            this.timeout = timeout;
+        public Builder withMapReduceTaskTimeout(final String mapReduceTaskTimeout) {
+            this.mapReduceTaskTimeout = mapReduceTaskTimeout;
             return new Builder(this);
         }
     }

@@ -462,16 +462,16 @@ public final class JetFuelConfigurationTest {
     @Test
     public void testTimeout() {
         final JetFuelConfiguration jetFuelConfigurationWithoutTimeout = builder
-                .withTimeout(null)
+                .withMapReduceTaskTimeout(null)
                 .build();
-        assertNotNull(jetFuelConfigurationWithoutTimeout.getTimeout());
-        assertEquals("1200000", jetFuelConfigurationWithoutTimeout.getTimeout());
+        assertNotNull(jetFuelConfigurationWithoutTimeout.getMapReduceTaskTimeout());
+        assertEquals("1200000", jetFuelConfigurationWithoutTimeout.getMapReduceTaskTimeout());
 
 
         final JetFuelConfiguration jetFuelConfigurationWithTimeout = builder
-                .withTimeout("110000")
+                .withMapReduceTaskTimeout("110000")
                 .build();
-        assertNotNull(jetFuelConfigurationWithTimeout.getTimeout());
-        assertEquals("110000", jetFuelConfigurationWithTimeout.getTimeout());
+        assertNotNull(jetFuelConfigurationWithTimeout.getMapReduceTaskTimeout());
+        assertEquals("110000", jetFuelConfigurationWithTimeout.getMapReduceTaskTimeout());
     }
 }
