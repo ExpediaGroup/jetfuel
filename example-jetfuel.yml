@@ -17,4 +17,4 @@
   preFueling:
     dropTarget: false
   partitionGrouping: dynamic
-  timeout: 1100000
+  mapReduceTaskTimeout: 1100000
