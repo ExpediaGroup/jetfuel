@@ -6,7 +6,7 @@
 
     <groupId>com.expediagroup</groupId>
     <artifactId>jetfuel</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <name>jetfuel</name>
     <description>JetFuel is a utility for copying Hive tables</description>
