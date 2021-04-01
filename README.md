@@ -245,4 +245,4 @@ We gladly accept contributions to this project in the form of issues, feature re
 
 This project is available under the Apache 2.0 License.
 
-Copyright 2018 Expedia Group
+Copyright 2018-2021 Expedia, Inc.
