@@ -80,7 +80,7 @@ brew update && brew install rpm
 
 Clone the project using the following command
 ```bash
-git clone git@github.com:ExpediaInceCommercePlatform/jetfuel.git
+git clone git@github.com:ExpediaGroup/jetfuel.git
 ```
 
 Build and package the JetFuel JAR and RPM:
@@ -239,7 +239,7 @@ Currently, the integration test suite for JetFuel cannot be made publicly availa
 
 ## Contributing
 
-We gladly accept contributions to this project in the form of issues, feature requests, and pull requests!
+We gladly accept contributions to this project in the form of issues, feature requests, and pull requests! Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 
 ## Licensing
 
