@@ -53,7 +53,7 @@
         <commons-lang3.version>3.0</commons-lang3.version>
         <equalsverifier.version>3.0.3</equalsverifier.version>
         <hadoop.version>2.7.7</hadoop.version>
-        <hive.version>1.2.1</hive.version>
+        <hive.version>3.1.2</hive.version>
         <jacoco.version>0.8.2</jacoco.version>
         <lombok.version>1.18.2</lombok.version>
         <mockito-core.version>2.23.0</mockito-core.version>
