@@ -12,8 +12,6 @@
     <description>JetFuel is a utility for copying Hive tables</description>
     <inceptionYear>2018</inceptionYear>
 
-    <url>https://expediaincecommerceplatform.github.io/jetfuel</url>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -22,14 +20,14 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/ExpediaInceCommercePlatform/jetfuel.git</connection>
-        <developerConnection>scm:git:ssh://github.com:ExpediaInceCommercePlatform/jetfuel.git</developerConnection>
-        <url>https://github.com/ExpediaInceCommercePlatform/jetfuel/tree/master</url>
+        <connection>scm:git:git://github.com/ExpediaGroup/jetfuel.git</connection>
+        <developerConnection>scm:git:ssh://ExpediaGroup/jetfuel.git</developerConnection>
+        <url>https://github.com/ExpediaGroup/jetfuel/tree/main</url>
     </scm>
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/ExpediaInceCommercePlatform/jetfuel/issues</url>
+        <url>https://github.com/ExpediaGroup/jetfuel/issues</url>
     </issueManagement>
 
     <organization>
@@ -218,7 +216,8 @@
                         <headerDefinition>resources/header-definitions.xml</headerDefinition>
                     </headerDefinitions>
                     <properties>
-                        <owner>Expedia Group</owner>
+                        <owner>Expedia, Inc.</owner>
+                        <currentYear>${current.year}</currentYear>                        
                     </properties>
                     <includes>
                         <include>src/main/java/**</include>
@@ -229,8 +228,9 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>validate</phase>
                         <goals>
-                            <goal>check</goal>
+                            <goal>format</goal>
                         </goals>
                     </execution>
                 </executions>
